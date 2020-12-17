@@ -174,3 +174,10 @@ grub-mkconfig -o /boot/grub/grub.cfg
 ```
 > Reference: https://wiki.archlinux.org/index.php/GRUB#UEFI_systems
 15. Reboot
+
+#### Situation commands
+1. change LV Status from 'NOT available' to 'available'
+```bash
+lvchange -ay /dev/vgzero/root
+```
+> reference: https://www.linuxquestions.org/questions/linux-newbie-8/lvm-mount-via-usb-4175530567/
