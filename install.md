@@ -34,8 +34,8 @@ lvcreate -L 64GiB -n home vgzero
 ```bash
 mkfs.vfat /dev/nvme0n1p1
 mkfs.ext4 /dev/nvme0n1p2
-mkfs.ext4 /dev/mapper/vgzero-root
-mkfs.ext4 /dev/mapper/vgzero-home
+mkfs.btrfs /dev/mapper/vgzero-root
+mkfs.btrfs /dev/mapper/vgzero-home
 mkswap /dev/mapper/vgzero-swap
 swapon /dev/mapper/vgzero-swap
 ```
@@ -75,11 +75,11 @@ passwd
 # fstab
 vim /etc/fstab
 #------------------------
-/dev/mapper/vgzero-root    /            ext4    defaults    0    1
-/dev/mapper/vgzero-swap    none         swap    defaults    0    0
-/dev/mapper/vgzero-home    /home        ext4    defaults    0    2
-/dev/nvme0n1p2             /boot        ext4    defaults    0    1
-/dev/nvme0n1p1             /boot/efi    vfat    defaults    0    2
+/dev/mapper/vgzero-root    /            btrfs    noatime,nodiratime    0    1
+/dev/mapper/vgzero-swap    none         swap     noatime,nodiratime    0    0
+/dev/mapper/vgzero-home    /home        btrfs    noatime,nodiratime    0    2
+/dev/nvme0n1p2             /boot        ext4     defaults    0    1
+/dev/nvme0n1p1             /boot/efi    vfat     defaults    0    2
 devpts    /dev/pts    devpts    noexec,nosuid,gid=tty,mode=0620    0    0
 shm       /dev/shm    tmpfs     defaults    0    0
 #------------------------
@@ -96,7 +96,7 @@ SERVICES=(lo net crond sshd)
 #------------------------
 
 # config locales
-localedef -i en_US -F UTF-8 en_US.UTF-8
+localedef -i en_US -f UTF-8 en_US.UTF-8
 
 # enable network interface
 ifconfig --up enp6s0
