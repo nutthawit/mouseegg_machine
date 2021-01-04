@@ -1,0 +1,27 @@
+# TODO for Labtop.
+## Package lists
+- acpid:contrib
+- anydesk
+- git:opt
+- freerdp2
+- htop:opt
+- ffmpeg:opt
+- bspwm:contrib
+- sxhkd:contrib
+- rxvt-unicode:contrib
+- mupdf:opt
+- alsa-lib:opt
+- alsa-utils:opt
+- pulseaudio:opt
+- unrar:opt
+- unzip:opt
+- zip:opt
+- wireless-tools:opt
+- wpa_supplicant:opt
+- tree:contrib
+- font-noto:contrib
+- feh:contrib
+- slim:opt
+- slim-themes:contrib
+- lemonbar:contrib
+- dmenu:contrib
